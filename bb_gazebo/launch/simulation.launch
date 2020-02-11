@@ -53,7 +53,7 @@
     <node name="ground_truth_republisher" pkg="bb_gazebo" type="ground_truth_republisher" output="screen">
         <param name="ground_truth_sub_topic" value="/ground_truth/state_raw"/>
         <param name="ground_truth_pub_topic" value="/ground_truth"/>
-    </node> 
+    </node>
 
     <!-- <node pkg="bb_utils" type="quaternion_to_rpy" name="ground_truth_to_rpy" respawn="true" output="screen">
         <param name="topics/quaternion" value="/ground_truth"/>
