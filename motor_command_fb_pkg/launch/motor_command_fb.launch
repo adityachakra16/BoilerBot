@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="motor_command_fb_pkg" type="motor_command_fb.py"			      		name="motor_command_fb" output="screen">
+	</node>
+</launch>
