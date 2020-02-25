@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="mybot_navigation" type="lidar.py" name="scan_values" output="screen">
+        
+    </node>
+</launch>
