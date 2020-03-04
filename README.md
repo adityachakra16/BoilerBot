@@ -2,7 +2,7 @@
 
 An autonomous vehicle built by Purdue University students
 
-Setup:
+### Setup
 
 1. Clone integration branch inside 'src/' directory in your catkin workspace
 2. Run: 'catkin_make'
