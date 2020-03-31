@@ -1,0 +1,1 @@
+This is a base file for communicating with ROS via rosserial. It is necessary to have rosserial installed in ROS in the PC. This program published to the motor_speed_fb topic and subscribes to the motor_speed_command topic. The ROS program to publish andsubscribe to these topics is in the motor_command_fb_pkg.
