@@ -40,7 +40,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://boilerbot_description_integ/meshes/bb10_model.dae"/>
+        <mesh filename="package://boilerbot_description_integ/meshes/bb10_no_wheels.dae"/>
       </geometry>
     </visual>
 
