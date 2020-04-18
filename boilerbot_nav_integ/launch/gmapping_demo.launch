@@ -1,24 +1,37 @@
 <?xml version="1.0"?>
 <launch>
-  <master auto="start"/>
-  <param name="/use_sim_time" value="true"/>
-  <!--- Run gmapping -->
-  <node pkg="gmapping" name="slam_gmapping" type="slam_gmapping" output="screen">
-    <param name="delta" value="0.01"/>
-    <param name="xmin" value="-20"/>
-    <param name="xmax" value="20"/>
-    <param name="ymin" value="-20"/>
-    <param name="ymax" value="20"/>
-    <remap from="scan" to="mybot/laser/scan"/>
-    <param name="base_frame" value="chassis" />
 
-    <param name="linearUpdate" value="0.5"/>
-    <param name="angularUpdate" value="0.436"/>
-    <param name="temporalUpdate" value="-1.0"/>
-    <param name="resampleThreshold" value="0.5"/>
-    <param name="particles" value="80"/>
+    <!--<arg name="use_rosbot" default="true"/>-->
+    <arg name="use_gazebo" default="true"/>
 
-  </node>
+    <!--<include if="$(arg use_gazebo)" file="$(find boilerbot_gazebo_integ)/launch/qualification.launch"/>-->
+    <!--<include if="$(arg use_gazebo)" file="$(find boilerbot_gazebo_integ)/launch/myrobot.launch"/>-->
 
+    <param if="$(arg use_gazebo)" name="use_sim_time" value="true"/>
+  
+    <!--<node if="$(arg use_rosbot)" pkg="tf" type="static_transform_publisher" name="laser_broadcaster" args="0 0 0 3.14 0 0 base_link laser 100" />-->
+
+
+	<node pkg="turtlebot3_teleop" type="turtlebot3_teleop_key" name="turtlebot3_teleop_keyboard"  output="screen">
+	</node>
+
+    <node pkg="rviz" type="rviz" name="rviz"/>
+
+    <node pkg="gmapping" type="slam_gmapping" name="gmapping">
+        <param name="base_frame" value="chassis"/>
+        <param name="odom_frame" value="odom" />
+        <param name="delta" value="0.1" />
+		<remap from="scan" to="mybot/laser/scan"/>    
+    </node>
+
+
+    <node pkg="move_base" type="move_base" name="move_base" output="screen">
+        <param name="controller_frequency" value="10.0"/>
+        <rosparam file="$(find boilerbot_nav_integ)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find boilerbot_nav_integ)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find boilerbot_nav_integ)/config/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find boilerbot_nav_integ)/config/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find boilerbot_nav_integ)/config/trajectory_planner.yaml" command="load" />
+    </node>
 
 </launch>

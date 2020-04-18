@@ -7,11 +7,11 @@
       <legacyMode>false</legacyMode>
       <alwaysOn>true</alwaysOn>
       <updateRate>20</updateRate>
-      <leftJoint>left_wheel_hinge</leftJoint>
-      <rightJoint>right_wheel_hinge</rightJoint>
-      <wheelSeparation>0.4</wheelSeparation>
+      <leftJoint>left_drive_hinge</leftJoint>
+      <rightJoint>right_drive_hinge</rightJoint>
+      <wheelSeparation>0.6</wheelSeparation>
       <wheelDiameter>0.1</wheelDiameter>
-      <torque>20</torque>
+      <torque>200</torque>
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
@@ -23,12 +23,20 @@
       <material>Gazebo/Orange</material>
   </gazebo>
 
-  <gazebo reference="left_wheel">
-    <material>Gazebo/Blue</material>
+  <gazebo reference="left_drive_wheel">
+    <material>Gazebo/Grey</material>
   </gazebo>
 
-  <gazebo reference="right_wheel">
-    <material>Gazebo/Blue</material>
+  <gazebo reference="right_drive_wheel">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo reference="left_castor_wheel">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo reference="right_castor_wheel">
+    <material>Gazebo/Grey</material>
   </gazebo>
 
   <gazebo reference="camera">
@@ -76,8 +84,8 @@
           <horizontal>
             <samples>720</samples>
             <resolution>1</resolution>
-            <min_angle>-1.570796</min_angle>
-            <max_angle>1.570796</max_angle>
+            <min_angle>-0.4</min_angle>
+            <max_angle>0.4</max_angle>
           </horizontal>
         </scan>
         <range>
