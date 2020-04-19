@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<launch>
+  <master auto="start"/>
+  <param name="/use_sim_time" value="true"/>
+  <!--Map Saver -->
+  <node name="map_saver" pkg="map_server" type="map_saver">
+    <param name="occ" value="90"/>
+    <param name="free" value="10"/>
+    <param name="f" value="/home/chakra17/chakra/senior-design-software/src/BoilerBot/test"/>
+  </node>
+
+  <!--- Run gmapping -->
+  <node pkg="gmapping" name="slam_gmapping" type="slam_gmapping" output="screen">
+    <param name="delta" value="0.01"/>
+    <param name="xmin" value="-20"/>
+    <param name="xmax" value="20"/>
+    <param name="ymin" value="-20"/>
+    <param name="ymax" value="20"/>
+    <remap from="scan" to="mybot/laser/scan"/>
+    <param name="base_frame" value="chassis" />
+    <!--<param name="map_update_interval" value="1.0">-->
+
+    <param name="linearUpdate" value="0.5"/>
+    <param name="angularUpdate" value="0.436"/>
+    <param name="temporalUpdate" value="-1.0"/>
+    <param name="resampleThreshold" value="0.5"/>
+    <param name="particles" value="80"/>
+  </node>
+</launch>

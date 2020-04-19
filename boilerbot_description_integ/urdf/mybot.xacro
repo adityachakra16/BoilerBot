@@ -21,28 +21,12 @@
 
 
   <!--camera -->
-  <xacro:property name="cameraSize" value="0.05"/>
+  <xacro:property name="cameraSize" value="0.01"/>
   <xacro:property name="cameraMass" value="0.03"/>
   <xacro:property name="camera_mount_height" value="0.5"/>
   <xacro:property name="camera_mount_width" value="0.05"/>
   <xacro:property name="camera_mount_length" value="0.05"/>
   <xacro:property name="camera_mount_mass" value="0.05"/>
-
-
-  <!--LiDAR-->
-
-
-
-  <!--INS -->
-
-
-
-  <!--Payload -->
-
-
-
-
-   <!--Laptop -->
 
 
 
@@ -53,8 +37,10 @@
   <xacro:include filename="$(find boilerbot_description_integ)/urdf/macros.xacro" />
 
 
+  <!-- Chassis Link -->
+
   <link name='chassis'>
-    <pose>0 0 0.1 0 0 0</pose>
+    <pose>0 0 0 0 0 0</pose>
 
     <inertial>
       <mass value="${chassis_mass}"/>
@@ -68,18 +54,19 @@
 
     <collision name='collision'>
       <geometry>
-        <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+        <mesh filename="package://boilerbot_description_integ/meshes/bodyNoWheels.dae"/>
       </geometry>
     </collision>
 
     <visual name='chassis_visual'>
-      <origin xyz="0 0 0" rpy=" 0 0 0"/>
+      <origin xyz="0 0 0" rpy=" 0 0 -1.5707"/>
       <geometry>
-        <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+        <mesh filename="package://boilerbot_description_integ/meshes/bodyNoWheels.dae"/>
       </geometry>
     </visual>
   </link>
 
+  <!-- Left Castor Wheel Link -->
 
   <link name="left_castor_wheel">
     <collision name='left_caster_collision'>
@@ -107,6 +94,8 @@
   </link>
 
 
+  <!-- Right Castor Wheel Link -->
+
   <link name="right_castor_wheel">
     <collision name='right_caster_collision'>
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
@@ -133,6 +122,8 @@
   </link>
 
 
+  <!-- Left Drive Wheel Link -->
+
   <link name="left_drive_wheel">
     <collision name="collision">
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
@@ -157,6 +148,9 @@
     </inertial>
   </link>
 
+
+  <!-- Right Drive Wheel Link -->
+
   <link name="right_drive_wheel">
     <!--origin xyz="0.1 -0.13 0.1" rpy="0 1.5707 1.5707"/-->
     <collision name="collision">
@@ -173,7 +167,7 @@
     </visual>
     <inertial>
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
-      <mass value="5"/>
+      <mass value="${drive_wheel_mass}"/>
       <cylinder_inertia m="${drive_wheel_mass}" r="${drive_wheel_diameter/2}" h="${drive_wheel_width}"/>
       <inertia
         ixx="1.0" ixy="0.0" ixz="0.0"
@@ -182,39 +176,44 @@
     </inertial>
   </link>
 
+  <!-- Left Drive wheel joint -->
 
   <joint type="continuous" name="left_drive_hinge">
-    <origin xyz="0.2 0.15 0" rpy="0 0 0"/>
-    <child link="left_wheel"/>
+    <origin xyz="0 0.31 0.1" rpy="0 0 0"/>
+    <child link="left_drive_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
+
+  <!-- Right Drive Wheel Joint -->
 
   <joint type="continuous" name="right_drive_hinge">
-    <origin xyz="0.2 -0.15 0" rpy="0 0 0"/>
-    <child link="right_wheel"/>
+    <origin xyz="0 -0.31 0.1" rpy="0 0 0"/>
+    <child link="right_drive_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
 
+  <!-- Left Castor Wheel Joint -->
 
   <joint type="continuous" name="left_castor_hinge">
-    <origin xyz="-0.2 0.15 0" rpy="0 0 0"/>
-    <child link="left_caster"/>
+    <origin xyz="-0.53 0.13 0.09" rpy="0 0 0"/>
+    <child link="left_castor_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
 
+  <!-- Right Castor Wheel Joint -->
 
   <joint type="continuous" name="right_castor_hinge">
-    <origin xyz="-0.2 -0.15 0" rpy="0 0 0"/>
-    <child link="right_caster"/>
+    <origin xyz="-0.53 -0.13 0.09" rpy="0 0 0"/>
+    <child link="right_castor_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="100" velocity="100"/>
@@ -224,7 +223,7 @@
 
 
 
-
+  <!-- Camera -->
 
   <link name="camera">
     <collision>
@@ -250,41 +249,11 @@
     </inertial>
   </link>
 
-  <link name="camera_mount">
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <box size="${camera_mount_length} ${camera_mount_width} ${camera_mount_height}"/>
-      </geometry>
-    </collision>
-
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <box size="${camera_mount_length} ${camera_mount_width} ${camera_mount_height}"/>
-      </geometry>
-      <material name="black"/>
-    </visual>
-
-    <inertial>
-      <mass value="${camera_mount_mass}" />
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <box_inertia m="${camera_mount_mass}" x="${camera_mount_length}" y="${camera_mount_width}" z="${camera_mount_height}" />
-      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
-    </inertial>
-  </link>
-
-  <joint name="camera_mount_joint" type="fixed">
-    <axis xyz="0 1 0" />
-    <origin xyz="0 0 ${vehicle_clearance}" rpy="0 0 0"/>
-    <parent link="chassis"/>
-    <child link="camera_mount"/>
-  </joint>
 
   <joint name="camera_joint" type="fixed">
     <axis xyz="0 1 0" />
-    <origin xyz="0 0 3" rpy="0 0.8 0"/>
-    <parent link="camera_mount"/>
+    <origin xyz="-0.04 0 1.05" rpy="0 0.5 0"/>
+    <parent link="chassis"/>
     <child link="camera"/>
   </joint>
 
@@ -314,7 +283,7 @@
 
   <joint name="hokuyo_joint" type="fixed">
     <axis xyz="0 1 0" />
-    <origin xyz=".15 0 .1" rpy="0 0 0"/>
+    <origin xyz="0.25 0 .457" rpy="0 0 0"/>
     <parent link="chassis"/>
     <child link="hokuyo"/>
   </joint>

@@ -12,16 +12,18 @@
     <!--<node if="$(arg use_rosbot)" pkg="tf" type="static_transform_publisher" name="laser_broadcaster" args="0 0 0 3.14 0 0 base_link laser 100" />-->
 
 
-	<node pkg="turtlebot3_teleop" type="turtlebot3_teleop_key" name="turtlebot3_teleop_keyboard"  output="screen">
-	</node>
+    <node pkg="turtlebot3_teleop" type="turtlebot3_teleop_key" name="turtlebot3_teleop_keyboard"  output="screen">
+    </node>
 
-    <node pkg="rviz" type="rviz" name="rviz"/>
+    <include file="$(find boilerbot_description_integ)/launch/mybot_rviz.launch">
+
+    </include>
 
     <node pkg="gmapping" type="slam_gmapping" name="gmapping">
         <param name="base_frame" value="chassis"/>
         <param name="odom_frame" value="odom" />
         <param name="delta" value="0.1" />
-		<remap from="scan" to="mybot/laser/scan"/>    
+	<remap from="scan" to="mybot/laser/scan"/>    
     </node>
 
 
