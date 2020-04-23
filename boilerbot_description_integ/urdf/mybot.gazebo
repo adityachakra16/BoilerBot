@@ -12,8 +12,8 @@
       <rightJoint>right_drive_hinge</rightJoint>
       <wheelSeparation>0.6</wheelSeparation>
       <wheelDiameter>0.1</wheelDiameter>
-      <torque>20</torque>
-      <commandTopic>bbot/cmd_vel</commandTopic>
+      <torque>200</torque>
+      <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
       <robotBaseFrame>chassis</robotBaseFrame>
@@ -24,6 +24,7 @@
       <wheelTorque>5</wheelTorque>
       <odometrySource>world</odometrySource>
       <publishTf>1</publishTf>
+      <publishOdomTF>true</publishOdomTF>
     </plugin>
   </gazebo>
 

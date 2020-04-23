@@ -68,7 +68,7 @@
     <include>
       <uri>model:///urdf/models/barrel</uri>
       <name>barrel_9</name> <!-- THE NAME MUST BE UNIQUE-->
-      <pose>0.5, 7.0 0 0 -0 0</pose>
+      <pose>5 7.0 0 0 -0 0</pose>
     </include>
     <include>
       <uri>model:///urdf/models/barrel</uri>
@@ -108,7 +108,7 @@
     <include>
       <uri>model:///urdf/models/barrel</uri>
       <name>barrel_17</name> <!-- THE NAME MUST BE UNIQUE-->
-      <pose>0.4 5.6 0 0 -0 0</pose>
+      <pose>4.2 5.6 0 0 -0 0</pose>
     </include>
     <include>
       <uri>model:///urdf/models/barrel</uri>

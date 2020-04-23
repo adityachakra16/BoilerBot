@@ -6,14 +6,17 @@
     <!--<arg name="gpu" default="false"/> -->
 
     <!-- Vehicle pose -->
+    <!--
     <arg name="x" value="-30"/>
-    <arg name="z" value="0.1525"/>
+    <arg name="z" value="0.1525"/>-->
+    <arg name="x" value="0"/>
+    <arg name="z" value="0"/>
     <arg name="roll" value="0.0"/>
     <arg name="pitch" value="0.0"/>
     <arg name="yaw" value="0"/>
 
     <!-- maps track value to different starting locations -->
-    <arg name="y" value="27" if="$(eval track == 0)"/>
+    <arg name="y" value="0" if="$(eval track == 0)"/>
     <arg name="y" value="21.5" if="$(eval track == 1)"/>
     <arg name="y" value="17" if="$(eval track == 2)"/>
     <arg name="y" value="13.5" if="$(eval track == 3)"/>

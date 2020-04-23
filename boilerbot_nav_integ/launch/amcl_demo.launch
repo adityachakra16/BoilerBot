@@ -29,8 +29,8 @@
     <rosparam file="$(find boilerbot_nav_integ)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
     <rosparam file="$(find boilerbot_nav_integ)/config/local_costmap_params.yaml" command="load" />
     <rosparam file="$(find boilerbot_nav_integ)/config/global_costmap_params.yaml" command="load" />
-    <rosparam file="$(find boilerbot_nav_integ)/config/base_local_planner_params.yaml" command="load" />
-    
+    <rosparam file="$(find boilerbot_nav_integ)/config/trajectory_planner.yaml" command="load" />
+
     <remap from="cmd_vel" to="cmd_vel"/>
     <remap from="odom" to="odom"/>
     <remap from="scan" to="mybot/laser/scan"/>
@@ -43,5 +43,3 @@
 
 
 </launch>
-
-
