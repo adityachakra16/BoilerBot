@@ -8,12 +8,12 @@
     <!--<include if="$(arg use_gazebo)" file="$(find boilerbot_gazebo_integ)/launch/myrobot.launch"/>-->
 
     <param if="$(arg use_gazebo)" name="use_sim_time" value="true"/>
-  
+
     <!--<node if="$(arg use_rosbot)" pkg="tf" type="static_transform_publisher" name="laser_broadcaster" args="0 0 0 3.14 0 0 base_link laser 100" />-->
 
 
-    <node pkg="turtlebot3_teleop" type="turtlebot3_teleop_key" name="turtlebot3_teleop_keyboard"  output="screen">
-    </node>
+    <!--<node pkg="turtlebot3_teleop" type="turtlebot3_teleop_key" name="turtlebot3_teleop_keyboard"  output="screen">
+  </node>-->
 
     <include file="$(find boilerbot_description_integ)/launch/mybot_rviz.launch">
 
@@ -23,7 +23,7 @@
         <param name="base_frame" value="chassis"/>
         <param name="odom_frame" value="odom" />
         <param name="delta" value="0.1" />
-	<remap from="scan" to="mybot/laser/scan"/>    
+	      <remap from="scan" to="mybot/laser/scan"/>
     </node>
 
 
@@ -34,6 +34,9 @@
         <rosparam file="$(find boilerbot_nav_integ)/config/local_costmap_params.yaml" command="load" />
         <rosparam file="$(find boilerbot_nav_integ)/config/global_costmap_params.yaml" command="load" />
         <rosparam file="$(find boilerbot_nav_integ)/config/trajectory_planner.yaml" command="load" />
+        <remap from="cmd_vel" to="cmd_vel"/>
+        <remap from="odom" to="odom"/>
+        <remap from="scan" to="mybot/laser/scan"/>
     </node>
 
 </launch>
