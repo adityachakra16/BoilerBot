@@ -18,7 +18,7 @@
     <!-- A ground plane -->
     <include>
       <uri>model:///urdf/models/qualification</uri>
-    </include> -->
+    </include> 
     <!-- barrels -->
     <include>
       <uri>model:///urdf/models/barrel</uri>
