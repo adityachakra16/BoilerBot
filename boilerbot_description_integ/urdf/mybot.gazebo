@@ -7,21 +7,21 @@
     <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
       <legacyMode>false</legacyMode>
       <alwaysOn>true</alwaysOn>
-      <updateRate>20</updateRate>
+      <updateRate>40</updateRate>
       <leftJoint>left_drive_hinge</leftJoint>
       <rightJoint>right_drive_hinge</rightJoint>
       <wheelSeparation>0.62</wheelSeparation>
       <wheelDiameter>0.1651</wheelDiameter>
-      <torque>2</torque>
+      <torque>200</torque>
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
-      <robotBaseFrame>chassis</robotBaseFrame>
+      <robotBaseFrame>base_link</robotBaseFrame>
       <publishWheelTF>false</publishWheelTF>
       <publishWheelJointState>false</publishWheelJointState>
       <rosDebugLevel>na</rosDebugLevel>
       <wheelAcceleration>0</wheelAcceleration>
-      <wheelTorque>5</wheelTorque>
+      <wheelTorque>50</wheelTorque>
       <odometrySource>world</odometrySource>
       <publishTf>1</publishTf>
       <publishOdomTF>true</publishOdomTF>
@@ -87,14 +87,14 @@
     <sensor type="ray" name="head_hokuyo_sensor">
       <pose>0 0 0 0 0 0</pose>
       <visualize>true</visualize>
-      <update_rate>40</update_rate>
+      <update_rate>20</update_rate>
       <ray>
         <scan>
           <horizontal>
             <samples>720</samples>
             <resolution>1</resolution>
-            <min_angle>-0.4</min_angle>
-            <max_angle>0.4</max_angle>
+            <min_angle>-1.57</min_angle>
+            <max_angle>1.57</max_angle>
           </horizontal>
         </scan>
         <range>
