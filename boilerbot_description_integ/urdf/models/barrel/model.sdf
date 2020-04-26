@@ -4,7 +4,7 @@
     <link name='link'>
       <gravity>1</gravity>
       <inertial>
-        <mass>500</mass>
+        <mass>0.01</mass>
         <inertia>
           <ixx>51.2096</ixx>
           <iyy>51.2096</iyy>
@@ -21,7 +21,7 @@
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
-        <max_contacts>10</max_contacts>
+        <max_contacts>50</max_contacts>
         <surface>
           <contact>
             <ode/>
