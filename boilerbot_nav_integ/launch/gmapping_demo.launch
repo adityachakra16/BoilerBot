@@ -20,9 +20,10 @@
     </include>
 
     <node pkg="gmapping" type="slam_gmapping" name="gmapping">
-        <param name="base_frame" value="chassis"/>
+        <param name="base_frame" value="base_link"/>
+        <param name="map_frame" value="map"/>
         <param name="odom_frame" value="odom" />
-        <param name="delta" value="0.1" />
+        <param name="delta" value="0.05" />
 	      <remap from="scan" to="mybot/laser/scan"/>
     </node>
 
