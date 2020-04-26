@@ -3,20 +3,20 @@
 <robot name="myrobot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!--wheels -->
-  <xacro:property name="drive_wheel_diameter" value="0.1651"/>
+  <xacro:property name="drive_wheel_diameter" value="0.1811"/>
   <xacro:property name="drive_wheel_width" value="0.0381"/>
-  <xacro:property name="drive_wheel_mass" value="3.63"/>
+  <xacro:property name="drive_wheel_mass" value="2.5"/>
 
-  <xacro:property name="caster_wheel_diameter" value="0.1524"/>
+  <xacro:property name="caster_wheel_diameter" value="0.1811"/>
   <xacro:property name="caster_wheel_width" value="0.0508"/>
-  <xacro:property name="caster_wheel_mass" value="1.81"/>
+  <xacro:property name="caster_wheel_mass" value="2.5"/>
 
 
   <!--chassis -->
   <xacro:property name="chassis_length" value="0.50"/>
   <xacro:property name="chassis_width" value="0.25"/>
   <xacro:property name="chassis_height" value="0.01"/>
-  <xacro:property name="chassis_mass" value="37"/>
+  <xacro:property name="chassis_mass" value="25"/>
   <xacro:property name="vehicle_clearance" value="0.25"/>
 
 
@@ -39,13 +39,19 @@
 
 
   <!-- Chassis Link -->
+  <link name='base_link'>
+    <pose>0 0 0 0 0 0</pose>
+
+  </link>
+
+
 
   <link name='chassis'>
     <pose>0 0 0 0 0 0</pose>
 
     <inertial>
       <mass value="${chassis_mass}"/>
-      <origin xyz="0.0 0 0.1" rpy=" 0 0 0"/>
+      <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
       <inertia
           ixx="${2 / 5 * chassis_mass * 1 ** 2}" ixy="0" ixz="0"
           iyy="${2 / 5 * chassis_mass * 1 ** 2}" iyz="0"
@@ -66,6 +72,10 @@
       </geometry>
     </visual>
   </link>
+
+  <!-- Payload -->
+  <!--<link name="payload">-->
+
 
   <!-- Left Castor Wheel Link -->
 
@@ -177,12 +187,20 @@
     </inertial>
   </link>
 
+  <!-- Base Link Chassis joint -->
+  <joint type="fixed" name="base_link_chassis">
+    <origin xyz="0 0 -0.1" rpy="0 0 0"/>
+    <child link="chassis"/>
+    <parent link="base_link"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
   <!-- Left Drive wheel joint -->
 
   <joint type="continuous" name="left_drive_hinge">
-    <origin xyz="0 0.31 0.1" rpy="0 0 0"/>
+    <origin xyz="0 0.31 0" rpy="0 0 0"/>
     <child link="left_drive_wheel"/>
-    <parent link="chassis"/>
+    <parent link="base_link"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
@@ -191,9 +209,9 @@
   <!-- Right Drive Wheel Joint -->
 
   <joint type="continuous" name="right_drive_hinge">
-    <origin xyz="0 -0.31 0.1" rpy="0 0 0"/>
+    <origin xyz="0 -0.31 0" rpy="0 0 0"/>
     <child link="right_drive_wheel"/>
-    <parent link="chassis"/>
+    <parent link="base_link"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
@@ -202,9 +220,9 @@
   <!-- Left Castor Wheel Joint -->
 
   <joint type="continuous" name="left_castor_hinge">
-    <origin xyz="-0.53 0.13 0.09" rpy="0 0 0"/>
+    <origin xyz="-0.53 0.13 0" rpy="0 0 0"/>
     <child link="left_castor_wheel"/>
-    <parent link="chassis"/>
+    <parent link="base_link"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
@@ -213,9 +231,9 @@
   <!-- Right Castor Wheel Joint -->
 
   <joint type="continuous" name="right_castor_hinge">
-    <origin xyz="-0.53 -0.13 0.09" rpy="0 0 0"/>
+    <origin xyz="-0.53 -0.13 0" rpy="0 0 0"/>
     <child link="right_castor_wheel"/>
-    <parent link="chassis"/>
+    <parent link="base_link"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
@@ -253,8 +271,8 @@
 
   <joint name="camera_joint" type="fixed">
     <axis xyz="0 1 0" />
-    <origin xyz="-0.04 0 1.05" rpy="0 0.5 0"/>
-    <parent link="chassis"/>
+    <origin xyz="-0.04 0 0.95" rpy="0 0.5 0"/>
+    <parent link="base_link"/>
     <child link="camera"/>
   </joint>
 
@@ -284,8 +302,8 @@
 
   <joint name="hokuyo_joint" type="fixed">
     <axis xyz="0 1 0" />
-    <origin xyz="0.25 0 .457" rpy="0 0 0"/>
-    <parent link="chassis"/>
+    <origin xyz="0.25 0 .420" rpy="0 0 0"/>
+    <parent link="base_link"/>
     <child link="hokuyo"/>
   </joint>
 
