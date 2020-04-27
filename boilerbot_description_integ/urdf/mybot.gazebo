@@ -86,7 +86,7 @@
   <gazebo reference="hokuyo">
     <sensor type="ray" name="head_hokuyo_sensor">
       <pose>0 0 0 0 0 0</pose>
-      <visualize>true</visualize>
+      <visualize>false</visualize>
       <update_rate>20</update_rate>
       <ray>
         <scan>
@@ -99,7 +99,7 @@
         </scan>
         <range>
           <min>0.1</min>
-          <max>50.0</max>
+          <max>10.0</max>
           <resolution>0.01</resolution>
         </range>
         <noise>

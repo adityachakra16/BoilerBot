@@ -39,10 +39,25 @@
         <remap from="odom" to="odom"/>
         <remap from="scan" to="mybot/laser/scan"/>
 
-        <param name="move_base/DWAPlannerROS/yaw_goal_tolerance" value="1.0"/>
+        <!--<param name="move_base/DWAPlannerROS/yaw_goal_tolerance" value="1.0"/>
         <param name="move_base/DWAPlannerROS/xy_goal_tolerance" value="1.0"/>
-        <!--<param name="move_base/DWAPlannerROS/max_rot_vel" value="1.0"/>
-        <param name="move_base/DWAPlannerROS/acc_lim_theta" value="10.0"/>-->
+	<param name="move_base/DWAPlannerROS/occdist_scale" value = "0.1"/>
+	<param name="move_base/DWAPlannerROS/path_distance_bias" value = "32.0"/>
+	<param name="move_base/DWAPlannerROS/goal_distance_bias" value = "24.0"/>
+	<param name="move_base/DWAPlannerROS/publish_cost_grid" value = "true"/> 
+	<param name="move_base/DWAPlannerROS/publish_cost_grid" value = "true"/> 
+	<param name="move_base/DWAPlannerROS/acc_lim_x" value = "2.5"/>
+	<param name="move_base/DWAPlannerROS/acc_lim_y" value = "2.5"/>
+	<param name="move_base/DWAPlannerROS/acc_lim_th" value = "3.2"/>
+	<param name="move_base/DWAPlannerROS/max_trans_vel" value = "0.55"/>
+	<param name="move_base/DWAPlannerROS/min_trans_vel" value = "-0.55"/>
+	<param name="move_base/DWAPlannerROS/max_vel_x" value = "0.55"/>
+	<param name="move_base/DWAPlannerROS/min_vel_x" value = "-0.55"/>
+	<param name="move_base/DWAPlannerROS/max_vel_y" value = "0.55"/>
+	<param name="move_base/DWAPlannerROS/min_vel_y" value = "-0.55"/>
+	<param name="move_base/DWAPlannerROS/max_rot_vel" value = "1.0"/>
+	<param name="move_base/DWAPlannerROS/min_rot_vel" value = "0.4"/>-->
+
     </node>
 
 </launch>

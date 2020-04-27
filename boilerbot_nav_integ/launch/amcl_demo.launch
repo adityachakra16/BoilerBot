@@ -3,14 +3,14 @@
   <master auto="start"/>
 
   <!-- Map server -->
-  <!--<arg name="map_file" default="$(find boilerbot_nav_integ)/maps/map.yaml"/>
-  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />-->
+  <arg name="map_file" default="$(find boilerbot_nav_integ)/maps/map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
   <!-- Place map frame at odometry frame -->
-  <!--<node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster"
+  <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster"
       args="-30 27 0.6525 0 0 0 map odom 100"/>
 
-  <node pkg="tf" type="static_transform_publisher" name="odom_base_broadcaster"
+  <!--<node pkg="tf" type="static_transform_publisher" name="odom_base_broadcaster"
       args="0 0 0 0 0 0 odom base_link 100"/>-->
 
   <!-- Localization -->

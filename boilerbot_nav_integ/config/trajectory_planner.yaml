@@ -7,10 +7,14 @@ TrajectoryPlannerROS:
   acc_lim_theta: 1.5
   acc_lim_x: 0.5
   acc_lim_y: 0.5
+  pdist_scale: 0.6
+  gdist_scale: 0.8
+  occdist_scale: 0.03
+  dwa: true  
 
 
   holonomic_robot: false
   meter_scoring: true
-  #heading_lookahead: 0.5  #How far to look ahead in meters when scoring different in-place-rotation trajectories
-  #heading_scoring: false  #Whether to score based on the robot's heading to the path or its distance from the path. default false
-  #heading_scoring_timestep: 1.0   #How far to look ahead in time in seconds along the simulated trajectory when using heading scoring (double, default: 0.8)
+  heading_lookahead: 0.5  #How far to look ahead in meters when scoring different in-place-rotation trajectories
+  heading_scoring: false  #Whether to score based on the robot's heading to the path or its distance from the path. default false
+  heading_scoring_timestep: 1.0   #How far to look ahead in time in seconds along the simulated trajectory when using heading scoring (double, default: 0.8)
