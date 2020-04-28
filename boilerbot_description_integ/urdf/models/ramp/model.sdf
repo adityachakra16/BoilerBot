@@ -10,7 +10,7 @@
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
-        <max_contacts>10</max_contacts>
+        <max_contacts>100</max_contacts>
         <surface>
           <friction>
             <ode>
