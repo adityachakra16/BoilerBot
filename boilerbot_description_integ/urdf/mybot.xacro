@@ -9,7 +9,7 @@
 
   <xacro:property name="caster_wheel_diameter" value="0.1811"/>
   <xacro:property name="caster_wheel_width" value="0.0508"/>
-  <xacro:property name="caster_wheel_mass" value="2.5"/>
+  <xacro:property name="caster_wheel_mass" value="3.7"/>
 
 
   <!--chassis -->
