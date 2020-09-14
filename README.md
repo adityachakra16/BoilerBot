@@ -1,6 +1,19 @@
 # BoilerBot
 
-An autonomous vehicle built by Purdue University students
+An autonomous vehicle designed and developed by ten senior design students at Purdue University to take part in the Intelligent Ground Vehicle Competition. The team, consisting of mechanical, electrical and computer engineers, started from scratch and developed a first virtual prototype within 3 months. Hopefully, this will be helpful to a Purdue team in the future that takes part in this competition.
+
+### Demo
+BoilerBot Demo: https://www.youtube.com/watch?v=RguvJBDiZ8Q
+### Technical Description
+The vehicle control system was built using the Robot Operating System framework. Our team took full advantage of existing ROS libraries. The robot was tested in the Gazebo simulation environment and sensor readings were visualized on Rviz. The testing environment is very similar to the actual IGVC course.
+
+
+#### System Diagram
+#### Decisions
+#### Challenges
+#### Future Work
+
+### Usage
 
 ### Setup
 
